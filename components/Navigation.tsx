@@ -23,26 +23,26 @@ const Tab = createBottomTabNavigator();
 
 export default function Navigation() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="List" component={ListScreen} />
-      <Tab.Screen name="Create" component={CreateScreen} />
-      <Stack.Navigator>
-        <Stack.Screen
-          name="List"
-          component={ListScreen}
-          options={{ title: "Bookings" }}
-        />
-        <Stack.Screen
-          name="Edit"
-          component={EditScreen}
-          options={{ title: "Modify your booking" }}
-        />
-        <Stack.Screen
-          name="Delete"
-          component={DeleteScreen}
-          options={{ title: "Delete" }}
-        />
-      </Stack.Navigator>
-    </Tab.Navigator>
+    // <Tab.Navigator>
+    //   <Tab.Screen name="List" component={ListScreen} />
+    //   <Tab.Screen name="Create" component={CreateScreen} />
+    <Stack.Navigator>
+      <Stack.Screen
+        name="List"
+        component={ListScreen}
+        options={{ title: "Bookings" }}
+      />
+      <Stack.Screen
+        name="Edit"
+        component={EditScreen}
+        options={{ title: "Modify your booking" }}
+      />
+      <Stack.Screen
+        name="Delete"
+        component={DeleteScreen}
+        options={{ title: "Delete" }}
+      />
+    </Stack.Navigator>
+    // </Tab.Navigator>
   );
 }
