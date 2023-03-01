@@ -1,4 +1,4 @@
-import { StatusBar, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { View, Text, FlatList, Button } from "react-native";
@@ -12,7 +12,7 @@ export default function ListScreen() {
   useEffect(() => {
     const fetchBookings = async () => {
       axios
-        .get("https://7248-109-58-197-226.eu.ngrok.io/bookings")
+        .get("https://e0ee-109-58-197-226.eu.ngrok.io/bookings")
         .then((response) => {
           console.log(response.data);
           setBookings(response.data);
@@ -26,9 +26,9 @@ export default function ListScreen() {
 
   return (
     <View>
-      <Text style={styles.title}>Bookings</Text>
       <SafeAreaView>
         <FlatList
+          style={styles.items}
           data={bookings}
           renderItem={({ item }: { item: BookingEntity }) => (
             <Booking booking={item} />
@@ -41,18 +41,14 @@ export default function ListScreen() {
 }
 
 const styles = StyleSheet.create({
-  title: {
-    alignItems: "center",
-    justifyContent: "center",
-    fontSize: 25,
-  },
   container: {
     flex: 1,
     // marginTop: StatusBar.currentHeight || 0,
   },
-  item: {
+  items: {
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
+    fontSize: 25,
   },
 });
