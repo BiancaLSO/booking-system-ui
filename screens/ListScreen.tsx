@@ -1,6 +1,6 @@
 import { ScrollView, StyleSheet } from "react-native";
 import axios from "axios";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { FlatList } from "react-native";
 import { SafeAreaView } from "react-navigation";
 import Booking from "../components/Booking";
@@ -13,7 +13,7 @@ export default function ListScreen() {
   useEffect(() => {
     const fetchBookings = async () => {
       axios
-        .get("https://0b6f-5-179-80-205.eu.ngrok.io/bookings")
+        .get("https://ed48-5-179-80-205.eu.ngrok.io/bookings")
         .then((response) => {
           console.log(response.data);
           setBookings(response.data);

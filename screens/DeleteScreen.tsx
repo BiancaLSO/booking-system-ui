@@ -7,10 +7,10 @@ export default function DeleteScreen(props: any) {
   const { bookings, setBookings } = useContext(BookingsContext);
 
   const deleteBooking = () => {
-    console.log(props);
     const bookingId = props.route.params.booking.id;
+
     axios
-      .delete(`https://0b6f-5-179-80-205.eu.ngrok.io/bookings/` + bookingId)
+      .delete(`https://ed48-5-179-80-205.eu.ngrok.io/bookings/` + bookingId)
       .then((response) => {
         console.log(response.data);
         const newBookings = bookings.filter(

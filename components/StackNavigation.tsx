@@ -25,7 +25,7 @@ export default function StackNavigation() {
       <Stack.Screen
         name="Delete"
         component={DeleteScreen}
-        options={{ title: "Delete" }}
+        options={{ title: "Delete your booking" }}
       />
     </Stack.Navigator>
   );

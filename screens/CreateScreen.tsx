@@ -23,7 +23,7 @@ export default function CreateScreen(props: any) {
 
   const createBooking = async () => {
     axios
-      .post("https://0b6f-5-179-80-205.eu.ngrok.io/bookings", {
+      .post("https://ed48-5-179-80-205.eu.ngrok.io/bookings", {
         name,
         numberOfPeople,
         date,
