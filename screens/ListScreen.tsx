@@ -12,7 +12,7 @@ export default function ListScreen() {
   useEffect(() => {
     const fetchBookings = async () => {
       axios
-        .get("https://52bd-109-58-197-226.eu.ngrok.io/bookings")
+        .get("https://b910-5-179-80-205.eu.ngrok.io/bookings")
         .then((response) => {
           console.log(response.data);
           setBookings(response.data);
@@ -28,7 +28,7 @@ export default function ListScreen() {
     <View>
       <SafeAreaView>
         <FlatList
-          style={styles.items}
+          // style={styles.items}
           data={bookings}
           renderItem={({ item }: { item: BookingEntity }) => (
             <Booking booking={item} />
@@ -45,10 +45,10 @@ const styles = StyleSheet.create({
     flex: 1,
     // marginTop: StatusBar.currentHeight || 0,
   },
-  items: {
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-    fontSize: 25,
-  },
+  // items: {
+  //   padding: 20,
+  //   marginVertical: 8,
+  //   marginHorizontal: 16,
+  //   fontSize: 25,
+  // },
 });

@@ -1,37 +1,22 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { BookingEntity } from "../entities/BookingEntity";
-import CreateScreen from "../screens/CreateScreen";
 import DeleteScreen from "../screens/DeleteScreen";
 import EditScreen from "../screens/EditScreen";
 import ListScreen from "../screens/ListScreen";
 
 export type StackMain = {
-  List: undefined;
+  Bookings: undefined;
   Edit: { booking: BookingEntity };
   Delete: { booking: BookingEntity };
 };
 
-export type TabMain = {
-  List: undefined;
-  Create: undefined;
-};
-
 const Stack = createNativeStackNavigator();
-const Tab = createBottomTabNavigator();
 
-export default function Navigation() {
+export default function StackNavigation() {
   return (
-    // <Tab.Navigator>
-    //   <Tab.Screen name="List" component={ListScreen} />
-    //   <Tab.Screen name="Create" component={CreateScreen} />
     <Stack.Navigator>
-      <Stack.Screen
-        name="List"
-        component={ListScreen}
-        options={{ title: "Bookings" }}
-      />
+      <Stack.Screen name="Bookings" component={ListScreen} />
       <Stack.Screen
         name="Edit"
         component={EditScreen}
@@ -43,6 +28,5 @@ export default function Navigation() {
         options={{ title: "Delete" }}
       />
     </Stack.Navigator>
-    // </Tab.Navigator>
   );
 }

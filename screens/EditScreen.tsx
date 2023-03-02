@@ -8,7 +8,7 @@ import {
   DatePickerIOS,
   TouchableOpacity,
 } from "react-native";
-import { StackMain } from "../components/Navigation";
+import { StackMain } from "../components/StackNavigation";
 import { BookingEntity } from "../entities/BookingEntity";
 
 type deleteScreenProp = StackNavigationProp<StackMain, "Delete">;
