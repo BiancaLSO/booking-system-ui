@@ -7,6 +7,7 @@ import {
   StyleSheet,
   DatePickerIOS,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import { StackMain } from "../components/StackNavigation";
 import { BookingEntity } from "../entities/BookingEntity";
@@ -18,7 +19,7 @@ export default function EditScreen(props: any) {
   const navigation = useNavigation<deleteScreenProp>();
 
   return (
-    <View>
+    <ScrollView>
       <View>
         <TextInput style={styles.input} accessibilityLabelledBy={"Name"}>
           {booking.name}
@@ -44,7 +45,7 @@ export default function EditScreen(props: any) {
           <Text style={styles.text}>Delete</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 

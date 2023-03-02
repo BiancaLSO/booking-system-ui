@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   View,
   Text,
@@ -7,19 +7,23 @@ import {
   StyleSheet,
   DatePickerIOS,
   TouchableOpacity,
+  Button,
+  ScrollView,
 } from "react-native";
+import { BookingsContext } from "../components/TabNavigation";
 
 export default function CreateScreen(props: any) {
-  const [name, setName] = useState();
-  const [numberOfPeople, setNumberOfPeople] = useState();
-  const [date, setDate] = useState();
-  const [phone, setPhone] = useState();
-  const [email, setEmail] = useState();
-  const [comment, setComment] = useState();
+  const [name, setName] = useState("");
+  const [numberOfPeople, setNumberOfPeople] = useState("");
+  const [date, setDate] = useState(new Date());
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [comment, setComment] = useState("");
+  const { addBooking } = useContext(BookingsContext);
 
   const createBooking = async () => {
     axios
-      .post("http://localhost:3000/bookings", {
+      .post("https://0b6f-5-179-80-205.eu.ngrok.io/bookings", {
         name,
         numberOfPeople,
         date,
@@ -29,54 +33,79 @@ export default function CreateScreen(props: any) {
       })
       .then((response) => {
         console.log(response.data);
+        addBooking(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
+
+    clearForm();
+  };
+
+  const clearForm = () => {
+    setName("");
+    setNumberOfPeople("");
+    setDate(new Date());
+    setPhone("");
+    setEmail("");
+    setComment("");
   };
 
   return (
-    <View>
+    <ScrollView>
       <View>
         <TextInput
           style={styles.input}
           placeholder="Name"
           value={name}
-          onChange={() => setName}
+          returnKeyType={"next"}
+          autoFocus={true}
+          onChangeText={(text) => setName(text)}
         ></TextInput>
         <TextInput
           style={styles.input}
           placeholder="Number of people"
           value={numberOfPeople}
-          onChange={() => setNumberOfPeople}
+          autoFocus={true}
+          returnKeyType={"next"}
+          onChangeText={(text) => setNumberOfPeople(text)}
         ></TextInput>
-        {/* <DatePickerIOS placeholder="Name" value={date}
-          onChange={() => setDate}></DatePickerIOS> */}
+        <DatePickerIOS
+          maximumDate={new Date(2100, 11, 31)}
+          date={date}
+          onDateChange={(date) => setDate(date)}
+        ></DatePickerIOS>
         <TextInput
           style={styles.input}
           placeholder="Phone"
           value={phone}
-          onChange={() => setPhone}
+          autoFocus={true}
+          returnKeyType={"next"}
+          onChangeText={(text) => setPhone(text)}
         ></TextInput>
         <TextInput
           style={styles.input}
           placeholder="Email"
           value={email}
-          onChange={() => setEmail}
+          autoFocus={true}
+          returnKeyType={"next"}
+          onChangeText={(text) => setEmail(text)}
         ></TextInput>
         <TextInput
           style={styles.input}
           placeholder="Comment"
           value={comment}
-          onChange={() => setComment}
+          autoFocus={true}
+          returnKeyType={"next"}
+          onChangeText={(text) => setComment(text)}
         ></TextInput>
       </View>
       <View style={styles.btnContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => createBooking()}>
+        <TouchableOpacity style={styles.button} onPress={createBooking}>
           <Text style={styles.text}>Create</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 

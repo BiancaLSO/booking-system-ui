@@ -14,9 +14,7 @@ export default function Booking({ booking }: { booking: BookingEntity }) {
       style={styles.button}
       onPress={() => navigation.navigate("Edit", { booking })}
     >
-      <Text style={styles.text}>
-        {booking.name} {booking.phone}
-      </Text>
+      <Text style={styles.text}>{booking.name}</Text>
     </TouchableOpacity>
   );
 }
